@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA. CATHLEEN O. LIBRADA</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: antiquewhite;
+        }
+
+        /* Header Styles */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .main-header .logo h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .navigation ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+            margin: 0;
+        }
+        .navigation ul li a {
+            font-size: 15px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: #BB86FC;
+            color: black;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+        .navigation ul li a:hover {
+            background-color: #a45de1;
+        }
+
+        /* Section Styles */
+        section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            margin: 60px;
+        }
+        .content-left {
+            max-width: 600px;
+        }
+    
+        .content-left h1 {
+            font-size: 29px; /* Larger font size for "Hi!" */
+        }
+        .content-left h2 {
+            font-size: 36px; /* Larger font size for "I'm Ma. Cathleen Librada" */
+        }
+        .name-highlight {
+          color: #BB86FC; /* Apply purple color */
+        }
+        .content-right img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        .scroll-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #BB86FC;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .scroll-btn:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        /* About Me Section */
+        .about-me {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background-color: #BB86FC;
+            height: 70vh;
+            padding-top: 30px; /* Moves text up */
+            padding-left: 40px; /* Aligns the text to the left */
+            max-width: 1000px;
+        }
+        
+        .about-box {
+            max-width: 900px;
+            background-color: #8A2BE2; /* Purple background */
+            border: none; /* No border */
+            border-radius: 10px;
+            padding: 30px;
+            text-align: left; /* Aligns the text to the left */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .about-box h2 {
+            color: white; /* Ensure text is readable */
+            font-size: 5em; /* Larger font size */
+        }
+        .about-box p {
+            font-size: 1.5em; /* Larger font size */
+            color: rgb(7, 7, 7); /* White text color for readability */
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="logo">
+            <h1>cath</h1>
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="https://www.facebook.com/">Contact Me</a></li>
+                <li><a href="#about-me">Learn More</a></li>
+                <li><a href="index.html ">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="content-left">
+            <h1>Hi!</h1>
+            <h2>I'm <span class="name-highlight">Ma. Cathleen Librada</span></h2>
+            <p>A 2nd year BSIT student from Polytechnic University of the Philippines<br> Santa Rosa campus.</p>
+            <button class="scroll-btn" onclick="scrollToAboutMe()">About Me</button>
+        </div>
+        <div class="content-right">
+            <img src="ako_to.jpg" alt="Your Image">
+        </div>
+    </section>
+
+    <!-- "About Me" Section -->
+    <section id="about-me" class="about-me">
+        <div class="about-box">
+            <h2>About Me</h2>
+            <p>I am currently pursuing a Bachelor of Science in Information Technology at the Polytechnic University of the Philippines. I am 19 years old, born on May 17, 2005, and I reside in Gulod, Cabuyao, Laguna. I have a deep passion for art, and in my free time, I enjoy watching Netflix, playing online games, drawing and sleeping.</p>
+        </div>
+    </section>
+
+    <script>
+        function scrollToAboutMe() {
+            document.getElementById('about-me').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+

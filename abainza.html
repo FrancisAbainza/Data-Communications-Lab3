@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=4, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oxanium:wght@200..800&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Default */
+    :root {
+      --display: 2.25rem;
+      --headline: 1.5rem; 
+      --title: 1.375rem;
+      --body: 1rem;
+      --space-xs: 0.625em;
+      --space-s: 1.5em;
+      --space-m: 3em;
+      --space-l: 4.5em;
+    }
+
+    * {
+      font-family: "Poppins", system-ui;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: white;
+    }
+
+    body {
+      background-color: #121212;
+    }
+
+    h1 {
+      font-size: var(--display);
+    }
+
+    h2 {
+      font-size: var(--headline);
+    }
+
+    h3 {
+      font-size: var(--title);
+      font-weight: normal;
+    }
+
+    p, a {
+      font-size: var(--body);
+    }
+
+    /* CSS */
+    header {
+      position: fixed;
+      width: 100%;
+      padding: var(--space-s);
+      z-index: 999;
+      opacity: 0;
+      transition: background-color .5s ease-in-out, padding .5s ease-in-out;
+      animation: reveal 1s ease-in-out 1s forwards;
+    }
+
+    header > .wrapper {
+      display: flex;
+    }
+
+    header > .wrapper > a {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    header > .wrapper > a > img {
+      width: 50px;
+    }
+
+    header > .wrapper > a > h3 {
+      font-weight: 300;
+    }
+
+    .sticky {
+      background-color: black;
+      padding: var(--space-s);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 6.25em;
+      margin: 0 var(--space-s) 6.25em;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-s);
+      padding-top: 9.375em;
+      animation: moveDownReveal 1s ease-in-out forwards;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid white;
+      border-radius: 50vh;
+      padding: 10px 30px;
+      margin-top: var(--space-xs);
+      cursor: pointer;
+      transition: background-color .1s ease-in-out, color .1s ease-in-out;
+    }
+
+    .button:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .hero > img {
+      align-self: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .about  {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xs);
+      opacity: 0;
+    }
+
+    .about > .header {
+      background-color: #1C1C1C;
+      border-radius: 16px;
+      padding: var(--space-s);
+      text-align: center;
+    }
+
+    .about > .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+      background-color: #1C1C1C;
+      border-radius: 16px;
+      padding: var(--space-s);
+    }
+
+    .about > .card > img {
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .about > .card > .overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(28, 28, 28, 0.95);
+      border-radius: 16px;
+      padding: var(--space-s) var(--space-m);
+      opacity: 0;
+      transition: opacity .1s ease-in-out;
+    }
+
+    .about > .card > .overlay:hover {
+      opacity: 1;
+    }
+
+    .about > .card > .overlay > ul > li > a {
+      text-decoration: underline;
+    }
+
+    .visible {
+      animation: scaleReveal 1s ease-in-out forwards;
+    }
+
+    @media only screen and (min-width: 768px) {
+      header {
+        padding: var(--space-m);
+      }
+
+      .sticky {
+        padding: var(--space-s) var(--space-m);
+      }
+
+      main {
+        margin: 0 var(--space-m) 6.25em;
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+      header {
+        padding: var(--space-m);
+      } 
+
+      .sticky {
+        padding: var(--space-s) 0;
+      }
+
+      header > .wrapper {
+        width: 1000px;
+        margin: auto;
+      }
+
+      main {
+        width: 1000px;
+        margin: 0 auto 6.25em;
+      }
+
+      .hero {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .about  {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .about > .header {
+        grid-column: span 3;
+      }
+    }
+
+    @keyframes moveDownReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleReveal {
+      from {
+        transform: scale(.9, .9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <title>Francis Abainza</title>
+</head>
+<body>
+  <header id="header">
+    <div class="wrapper">
+      <a onclick="scrollToSection('hero')">
+        <img src="f-logo.png" alt="logo">        
+        <h3>FRANCIS</h3>
+      </a>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="hero">
+      <div>
+        <h1>Hi! My name is<br>Francis Abainza.</h1>
+        <a class="button" onclick="scrollToSection('about')">About Me</a>
+        <a href="./index.html" class="button">back</a>
+      </div>
+      <img src="abainzapic.png" alt="abainza's picture">
+        
+    </section>
+    <section class="about" id="about">
+      <div class="header">
+        <h2>About Me</h2>
+        <p>I am a 2nd Year BSIT student from Polytechnic University of the Philippines Santa Rosa Campus. I am highly interested in programming, specifically for web and game development.</p>
+      </div>
+      <div class="card">
+        <img src="personal-info.png" alt="personal information icon">
+        <p>Personal Information</p>
+        <div class="overlay">
+          <h3>Personal Information</h3>
+          <ul>
+            <li><strong>Full Name:</strong> Francis Rafael A. Abainza</li>
+            <li><strong>Age:</strong> 20</li>
+            <li><strong>Location:</strong> San Pedro, Laguna</li>
+            <li><strong>Current School:</strong> PUP Santa Rosa</li>
+            <li><strong>Student Number:</strong> 2023-00818-SR-0</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <img src="hobbies.png" alt="hobbies icon">
+        <p>Hobbies</p>
+        <div class="overlay">
+          <h3>Hobbies</h3>
+          <ul>
+            <li>Playing video games</li>
+            <li>Watching YT videos/movies</li>
+            <li>Listening to music</li>
+            <li>Coding</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <img src="socials.png" alt="socials icon">
+        <p>Socials</p>
+        <div class="overlay">
+          <h3>Socials</h3>
+          <ul>
+            <li><a href="https://www.facebook.com/francisrafael.abainza/" target="_blank">Facebook</a></li>
+            <li><a href="https://www.linkedin.com/in/francis-abainza-8813a0282/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/FrancisAbainza" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script defer>
+    let header = document.querySelector("#header");
+    let about = document.querySelector("#about");
+
+    function observeElement(element, className) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(className);
+          }
+        });
+      },
+      {
+        threshold: .5, // Trigger when 100% of the element is visible
+      });
+      observer.observe(element);
+    }
+
+    function scrollToSection(area) {
+      var targetElement = document.getElementById(area);
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    observeElement(about, "visible");
+
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
+</body>
+</html>

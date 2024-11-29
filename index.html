@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oxanium:wght@200..800&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Default */
+    :root {
+      --display: 2.25rem;
+      --headline: 1.5rem; 
+      --title: 1.375rem;
+      --body: 1rem;
+      --space-xs: 0.625em;
+      --space-s: 1.5em;
+      --space-m: 3em;
+      --space-l: 4.5em;
+    }
+
+    * {
+      font-family: "Poppins", system-ui;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: white;
+    }
+
+    h1 {
+      font-size: var(--display);
+    }
+
+    h2 {
+      font-size: var(--headline);
+    }
+
+    h3 {
+      font-size: var(--title);
+      font-weight: normal;
+    }
+
+    p, a {
+      font-size: var(--body);
+    }
+
+    /* CSS */
+    body {
+      position: relative;
+    }
+
+    .background {
+      position: absolute;
+      object-fit: cover;
+      object-position: 50% 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -999;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      padding: var(--space-s);
+      z-index: 999;
+      opacity: 0;
+      transition: background-color .5s ease-in-out, padding .5s ease-in-out;
+      animation: reveal 1s ease-in-out 1s forwards;
+    }
+
+    header > .container > a > h3 {
+      font-weight: 200;
+    }
+
+    .sticky {
+      background-color: #880000;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero {
+      background-image: url(pupbg.jpg);
+      background-size: cover;
+      background-position: 50% 0;
+      padding: 0 var(--space-s) 0;
+    }
+
+    .hero > .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-s);
+      height: 100vh;
+      animation: moveDownReveal 1s ease-in-out forwards;
+    }
+
+    .hero .container > div > h2 {
+      font-weight: normal;
+    }
+
+    .hero > .container > .logo {
+      width: 100%;
+      max-width: 300px;
+      align-self: center;
+    }
+
+    .members {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      margin: 3.125em var(--space-s) 6.25em;
+      opacity: 0;
+    }
+
+    .members h2,
+    .members h3, 
+    .members a {
+      color: #880000;
+    }
+
+    .members > .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      text-align: center;
+    }
+
+    .member > a {
+      display: block;
+      text-decoration: underline;
+    }
+
+    .member > img {
+      border: 3px solid #880000;
+      border-radius: 50vh;
+      width: 12.5em;
+      height: 12.5em;
+    }
+
+    .visible {
+      animation: scaleReveal 1s ease-in-out forwards;
+    }
+
+    @media only screen and (max-height: 700px) {
+      .hero > .container {
+        justify-content: start;
+        padding-top: 6.25em;
+        padding-bottom: 6.25em;
+        height: unset;
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      header {
+        padding: var(--space-m);
+      }
+
+      .sticky {
+        padding: var(--space-s) var(--space-m);
+      }
+
+      .hero {
+        padding: 0 var(--space-m) 0;
+      }
+
+      .members {
+        margin: 3.125em var(--space-m) 6.25em;
+      }
+    }
+
+    @media only screen and (min-width: 1200px) {
+      header > .container {
+        width: 1100px;
+        margin: auto;
+      }
+
+      .hero > .container {
+        flex-direction: row;
+        align-items: center;
+        width: 1100px;
+        margin: auto;
+      }
+
+      .members {
+        width: 1100px;
+        margin: 3.125em auto  6.25em;
+      }
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scaleReveal {
+      from {
+        transform: scale(.9, .9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+    }
+
+    @keyframes moveDownReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <title>Data Communications Lab 2</title>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <a href="#">
+        <h3>GROUP-2</h3>
+      </a>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="hero">
+      <div class="container">
+        <div>
+          <h1>Polytechnic University of the Philippines Santa Rosa Campus</h1>
+          <h2><i>"Mula Sa' Yo, Para Sa Bayan"</i></h2>
+        </div>
+        <img class="logo" src="puplogo.png" alt="Polytechnic University of the Philippines logo">
+      </div>
+    </section>
+    <section class="members" id="members"> 
+      <h2>Data Communications and Networking<br/>(COMP-008)</h2>
+      <h3>Group Members:</h3>
+      <div class="container">
+        <div class="member">
+          <img src="abainza.png" alt="abainza's photo">
+          <a href="abainza.html" title="Abainza's Website">Abainza</a>
+        </div>
+        <div class="member">
+          <img src="barruga.png" alt="barruga's photo">
+          <a href="barruga.html" title="Barruga's Website">Barruga</a>
+        </div>
+        <div class="member">
+          <img src="buenaflor.png" alt="buenaflor's photo">
+          <a href="buenaflor.html" title="Buenaflor's Website">Buenaflor</a>
+        </div>
+        <div class="member">
+          <img src="librada.png" alt="librada's photo">
+          <a href="librada.html" title="Librada's Website">Librada</a>
+        </div>
+        <div class="member">
+          <img src="napi.png" alt="napi's photo">
+          <a href="napi.html" title="Napi's Website">Napi</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let header = document.querySelector("#header");
+    let members = document.querySelector("#members");
+
+    function observeElement(element, className) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(className);
+          }
+        });
+      });
+      observer.observe(element);
+    }
+
+    observeElement(members, "visible");
+
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("sticky", window.scrollY > 0);
+    });
+  </script>
+</body>
+</html>
